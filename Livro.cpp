@@ -1,51 +1,37 @@
-#include <string>
+#include "Livro.h"
+
 #include <iostream>
 
-class Livro{
-     private:
-          std::string titulo;
-          std::string autor;
-          bool disponivel;
+Livro::Livro(std::string titulo, std::string autor) : titulo(titulo), autor(autor), disponivel(true) {}
 
-     public:
-          Livro(std::string titulo, std::string autor){
-            this->titulo = titulo; 
-            this->autor = autor;
-            disponivel = true;
-          }
+void Livro::emprestarLivro(){
+     disponivel = false;
+}
 
-     void emprestarLivro(){
-          disponivel = false;
-     } 
-     
-     void devolverLivro(){
-          disponivel = true;
-     } 
-     
-     bool estaDisponivel(){
-          return disponivel;
-     }
+void Livro::devolverLivro(){
+     disponivel = true;
+}
 
-     std::string getTitulo(){
-          return titulo;
-     }
+bool Livro::estaDisponivel(){
+     return disponivel;
+}
 
-     std::string getAutor(){
-          return autor;
-     }
+std::string Livro::getTitulo(){
+     return titulo;
+}
 
-     void setTitulo(std::string titulo){
-           this->titulo = titulo;
-     }
+std::string Livro::getAutor(){
+     return autor;
+}
 
-     void setAutor(std::string autor){
-           this->autor = autor;
-     }
+void Livro::setTitulo(std::string titulo){
+      this->titulo = titulo;
+}
 
-     void setAutor(bool disponivel){
-           this->disponivel = disponivel;
-     }
+void Livro::setAutor(std::string autor){
+      this->autor = autor;
+}
 
-
-
-};
+void Livro::setAutor(bool disponivel){
+      this->disponivel = disponivel;
+}

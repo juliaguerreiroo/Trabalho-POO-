@@ -1,37 +1,24 @@
-#include <string>
+#include "Pessoa.h"
 #include <iostream>
 
-class Pessoa {
+Pessoa::Pessoa(std::string nome, std::string cpf) : nome(nome), cpf(cpf) {}
 
-    private:
-        std::string nome;
-        std::string cpf;
+void Pessoa::exibirDados(){
+    std::cout << "Nome: " << nome << "\nCPF: " << cpf;
+}
 
-    public:
-        Pessoa(std::string nome, std::string cpf){
-            this->nome = nome; 
-            this->cpf = cpf;
-        }
+std::string Pessoa::getNome(){
+    return nome;
+}
 
-        // virtual para que a classe possa ser substituida (override)
-        virtual void exibirDados(){
-            std::cout << "Nome: " << nome << "\nCPF: " << cpf;
-        }
+std::string Pessoa::getCpf(){
+    return cpf;
+}
 
-        std::string getNome(){
-            return nome;
-        }
+void Pessoa::setNome(std::string nome){
+    this->nome = nome;
+}
 
-        std::string getCpf(){
-            return cpf;
-        }
-
-        void setNome(std::string nome){
-            this->nome = nome;
-        }
-
-        void setCpf(std::string cpf){
-            this->cpf = cpf;
-        }
-
-};
+void Pessoa::setCpf(std::string cpf){
+    this->cpf = cpf;
+}

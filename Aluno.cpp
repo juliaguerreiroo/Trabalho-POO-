@@ -1,55 +1,38 @@
-#include <string>
+#include "Aluno.h"
 #include <iostream>
-#include "Pessoa.cpp"
 
-class Aluno: public Pessoa{
-    private:
-        std::string curso;
-        int livrosPegos;
-        int matricula;
+Aluno::Aluno(std::string nome, std::string cpf, std::string curso, int livrosPegos, int matricula)
+    : Pessoa(nome, cpf), curso(curso), livrosPegos(livrosPegos), matricula(matricula) {}
 
-    public:
-        Aluno(std::string nome, std::string cpf, std::string curso, int livrosPegos, int matricula):Pessoa(nome, cpf){
-            this->curso = curso;
-            this->livrosPegos = livrosPegos;
-            this->matricula = matricula;
-        }
-        
-        void exibirDados()override{
-            Pessoa::exibirDados();
-            std::cout << "\nCurso: " << curso << "\nLivros pegos: " << livrosPegos << "\nMatricula: " << matricula;
-        }
+void Aluno::exibirDados(){
+    Pessoa::exibirDados();
+    std::cout << "\nCurso: " << curso << "\nLivros pegos: " << livrosPegos << "\nMatricula: " << matricula;
+}
 
-        bool podePegar(){
-            if (livrosPegos < 3){
-                return true;
-            }
-            return false;
-        }
+bool Aluno::podePegar(){
+    return livrosPegos < 3;
+}
 
-        std::string getCurso(){
-            return curso;
-        }
+std::string Aluno::getCurso(){
+    return curso;
+}
 
-        void setCurso(std::string curso){
-            this->curso = curso;
-        }
+void Aluno::setCurso(std::string curso){
+    this->curso = curso;
+}
 
-        int getLivrosPegos(){
-            return livrosPegos;
-        }
+int Aluno::getLivrosPegos(){
+    return livrosPegos;
+}
 
-        void setLivrosPegos(int livrosPegos){
-            this->livrosPegos = livrosPegos;
-        }
+void Aluno::setLivrosPegos(int livrosPegos){
+    this->livrosPegos = livrosPegos;
+}
 
-        int getMatricula(){
-            return matricula;
-        }
+int Aluno::getMatricula(){
+    return matricula;
+}
 
-        void setMatricula(int matricula){
-            this->matricula = matricula;
-        }
-
-
-};
+void Aluno::setMatricula(int matricula){
+    this->matricula = matricula;
+}

@@ -1,60 +1,33 @@
-#include <string>
+#include "Emprestimo.h"
 #include <iostream>
-#include "Aluno.cpp"
-#include "Livro.cpp"
 
-class Emprestimo {
-     private:
-          Aluno aluno;
-          Livro livro;
-          int diasAtraso;
-          bool devolvido;
+Emprestimo::Emprestimo(Aluno aluno, Livro livro) : aluno(aluno), livro(livro) {
+     this->diasAtraso = 0;
+     this->devolvido = false;
+}
 
-     public:
-          Emprestimo(Aluno aluno, Livro livro) : aluno(aluno), livro(livro) {
-               //inicializa os atributos antes do construtor executar.Porque o emprestimo precisa de Livro e Aluno para existir
-               this->diasAtraso = 0;
-               this->devolvido = false;
-          }
+double Emprestimo::calcularMulta(){
+     double valorPorDia = 2.0;
 
-          void realizarEmprestimo(){
-               if (livro.estaDisponivel()){
-                    if (aluno.podePegar()){
-                         livro.emprestarLivro();
-                         devolvido = false;
-                         aluno.setLivrosPegos(aluno.getLivrosPegos() + 1);
-                         std::cout << "Livro emprestado!" << std::endl;
-                    }else{
-                         std::cout << "O aluno já atingiu o limite de livros para emprestimo!" << std::endl;
-                    }
-               }else{
-                    std::cout << "O livro não está disponivel" << std::endl;
-               }
-          }
+     if (diasAtraso > 0) {
+          return diasAtraso * valorPorDia;
+     }
 
-          double calcularMulta(){
-               double valorPorDia = 2.0;
+     return 0.0;
+}
 
-               if (diasAtraso > 0) {
-                    return diasAtraso * valorPorDia;
-               }
+int Emprestimo::getDiasAtraso(){
+     return diasAtraso;
+}
 
-               return 0.0;
-          }
+bool Emprestimo::getDevolvido(){
+     return devolvido;
+}
 
-          int getDiasAtraso(){
-               return diasAtraso;
-          }
+void Emprestimo::setDiasAtraso(int diasAtraso){
+     this->diasAtraso = diasAtraso;
+}
 
-          bool getDevolvido(){
-               return devolvido;
-          }
-
-          void setDiasAtraso(int diasAtraso){
-               this->diasAtraso = diasAtraso;
-          }
-
-          void setDevolvido(bool devolvido){
-               this->devolvido = devolvido;
-          }
-};
+void Emprestimo::setDevolvido(bool devolvido){
+     this->devolvido = devolvido;
+}
