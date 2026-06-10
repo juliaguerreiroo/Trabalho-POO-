@@ -27,7 +27,7 @@ O sistema resolverá o problema através do:
 
 **1. Cadastro de livros**
 
-Permite adicionar livros ao sistema com: título, autor e disponibilidade. (Está relacionada à classe Livro e relacionado ao método: adicionarLivro())
+Permite adicionar livros ao sistema com: título, autor e disponibilidade. Está relacionada à classe Livro e relacionado ao método: adicionarLivro()
 
 **2. Cadastro e gerenciamento de alunos**
 
@@ -35,12 +35,12 @@ São armazenados: nome, CPF, matrícula, curso e quantidade de livros emprestado
 
 **3. Verificação de disponibilidade do livro**
 
-O sistema verifica se o livro está disponível antes de permitir o empréstimo. Isso evita que o mesmo livro seja emprestado para mais de um aluno ao mesmo tempo. (Relacionada a classe: Livro e ao Método: estaDisponivel())
+O sistema verifica se o livro está disponível antes de permitir o empréstimo. Isso evita que o mesmo livro seja emprestado para mais de um aluno ao mesmo tempo. Relacionada a classe: Livro e ao Método: estaDisponivel()
 
 **4. Realização de empréstimos**
 
 Permite emprestar um livro para um aluno. O sistema deve: verificar se o livro está disponível, verificar se o aluno ainda pode pegar livros, atualiza a disponibilidade do livro e 
-registra o empréstimo. Essas ações estão relacionadas a classe: Biblioteca e ao método: ao “realizarEmprestimo()”.
+registra o empréstimo. Essas ações estão relacionadas a classe: Biblioteca e ao método: ao realizarEmprestimo().
 
 **5. Controle do limite de livros por aluno**
 
@@ -49,7 +49,7 @@ máximo de 3 livros por aluno, está relacionado a classe: Aluno e ao método: p
 
 **6. Devolução de livro**
 
-Permite registrar a devolução do livro, tornando-o disponível novamente para novos empréstimos. (Relacionada à classe: Livro e ao método: devolverLivro())
+Permite registrar a devolução do livro, tornando-o disponível novamente para novos empréstimos. Relacionada à classe: Livro e ao método: devolverLivro()
 
 **7. Cálculo de multa**
 
@@ -57,14 +57,20 @@ Caso haja atraso, o sistema calcula automaticamente a multa, essse comportamento
 
 **8. Listagem de livros**
 
-Permite visualizar todos os livros cadastrados no sistema. A funcionalidade exibir informações como: título, autor e disponibilidade do livro
+Permite visualizar todos os livros cadastrados no sistema. A funcionalidade exibir informações como: título, autor e disponibilidade do livro.
+
 Exemplo de saída:
+
 Livro: Java Orientado a Objetos
+
 Autor: Fulano de Tal
+
 Disponível: Sim
 
 Livro: Estruturas de Dados
+
 Autor: Ciclano de Tal
+
 Disponível: Não
 
 Essa funcionalidade está relacionada à classe: Biblioteca e ao método: listarLivros(), que percorre a lista: ArrayList<Livro> e mostra os dados de cada livro.
@@ -83,9 +89,16 @@ A orientação a objetos em C++ utiliza conceitos fundamentais como:
 
 Por exemplo, em um sistema de biblioteca, uma classe Livro pode possuir atributos como título e autor, além de métodos como emprestar() e devolver(). Assim, o C++ facilita a modelagem de sistemas de forma mais organizada, reutilizável e próxima da realidade.
 
-Para organizar melhor o programa, o C++ utiliza arquivos .h e .cpp. O arquivo .h contém a declaração da classe, mostrando quais atributos e métodos ela possui, enquanto o arquivo .cpp contém a implementação desses métodos, ou seja, o código que define seu funcionamento. Essa separação deixa o projeto mais organizado, facilita a manutenção e permite reutilizar as classes em outras partes do sistema sem precisar reescrever o código
+Para organizar melhor o programa, o C++ utiliza arquivos .h e .cpp. O arquivo .h contém a declaração da classe, mostrando quais atributos e métodos ela possui, enquanto o arquivo .cpp contém a implementação desses métodos, ou seja, o código que define seu funcionamento. Essa separação deixa o projeto mais organizado, facilita a manutenção e permite reutilizar as classes em outras partes do sistema sem precisar reescrever o código.
 
-Como realizar a execução e compilação do código desse programa?
+Em C++, arquivos .h (header files) são usados para declarar funções, classes, structs, variáveis e constantes que serão utilizadas em outros arquivos do projeto.
+
+A ideia principal é separar:
+
+* Declaração => o que existe (.h)
+* Implementação => como funciona (.cpp)
+
+### Como realizar a execução e compilação do código desse programa: ###
 
 **Para compilar todos os arquivos:**
 ```
@@ -104,6 +117,7 @@ A classe Pessoa é a superclasse do sistema, responsável por armazenar informa�
 **Atributos:**
 
 nome : String => armazena o nome da pessoa.
+
 cpf : String => armazena o CPF do usuário.
 
 **Método:**
@@ -113,6 +127,7 @@ exibirDados() : void => Exibe as informações da pessoa cadastrada.
 **Exemplo:**
 
 Nome: Julia
+
 CPF: 123.456.789-00
 
 **Trecho do código de Pessoa.h:**
@@ -149,20 +164,31 @@ A classe Aluno representa o usuário que poderá pegar livros emprestados, e  he
 **Atributos:**
 
 curso : String => Armazena o curso do aluno.
+
 livrosPegos : int =>Controla quantos livros o aluno possui emprestados.
+
 matricula : int => Identifica o aluno na universidade.
 
 **Métodos:**
 
 podePegar() : boolean => Verifica se o aluno ainda pode pegar livros emprestados.
+
 Regra de negócio:
+
 O aluno pode possuir no máximo 3 livros emprestados.
+
 Exemplo de funcionamento:
+
 livrosPegos = 2
+
 Resultado: true
+
 Ou seja, o aluno ainda pode realizar empréstimos.
+
 Se: livrosPegos = 3
+
 Resultado: false
+
 E assim o sistema impede novos empréstimos.
 
 exibirDados() : void => Sobrescreve(override/substitui) o método da classe Pessoa, exibindo informações específicas do aluno. 
@@ -170,8 +196,11 @@ exibirDados() : void => Sobrescreve(override/substitui) o método da classe Pess
 **Exemplo:**
 
 Nome: Julia
+
 Curso: Ciência da Computação
+
 Matrícula: 1001
+
 Livros Pegos: 2
 
 **Trecho do código de Aluno.h:**
@@ -213,7 +242,9 @@ A classe Livro representa os livros cadastrados na biblioteca.
 **Atributos:**
 
 titulo : String = > Armazena o título do livro.
+
 autor : String = > Armazena o autor do livro.
+
 disponivel : boolean =>  O atributo disponível controla se o livro está livre para empréstimo.
 
 **Métodos:**
@@ -223,14 +254,17 @@ estaDisponivel() : boolean => Verifica se o livro pode ser emprestado.
 **Exemplo:**
 
 disponivel = true
-Resultado:true
+
+Resultado: true
+
 Livro disponível para empréstimo.
 
 emprestarLivro() : void => Quando um empréstimo é realizado, esse método altera o atributo: disponivel = false
+
 Assim, o livro não poderá ser emprestado novamente até sua devolução.
 
-devolverLivro() : void => Quando o aluno devolve o livro, o método altera: disponivel
-= true
+devolverLivro() : void => Quando o aluno devolve o livro, o método altera: disponivel = true
+
 Permitindo um novo empréstimo.
 
 **Trecho do código de Livro.h:**
@@ -272,19 +306,26 @@ A classe Emprestimo é responsável por controlar as regras do empréstimo.
 **Atributos:**
 
 aluno : Aluno => Armazena o aluno responsável pelo empréstimo.
+
 livro : Livro => Armazena o livro emprestado.
+
 diasAtraso : int => Usado para calcular multa.
+
 devolvido : boolean => Informa se o livro foi devolvido.
+
 
 **Métodos:**
 
 calcularMulta() : double => Calcula multa caso haja atraso.
+
 Regra de negócio:
+
 multa = diasAtraso × 2
 
 **Exemplo:**
 
 diasAtraso = 4
+
 Resultado: multa = 8.0
 
 **Trecho do código de Emprestimo.h:**
