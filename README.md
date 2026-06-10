@@ -114,15 +114,18 @@ g++ *.cpp -o Biblioteca
 
 A classe Pessoa é a superclasse do sistema, responsável por armazenar informações básicas comuns aos usuários.
 
+
 **Atributos:**
 
 nome : String => armazena o nome da pessoa.
 
 cpf : String => armazena o CPF do usuário.
 
+
 **Método:**
 
 exibirDados() : void => Exibe as informações da pessoa cadastrada.
+
 
 **Exemplo:**
 
@@ -161,6 +164,7 @@ class Pessoa {
 
 A classe Aluno representa o usuário que poderá pegar livros emprestados, e  herda os atributos e métodos da classe Pessoa.
 
+
 **Atributos:**
 
 curso : String => Armazena o curso do aluno.
@@ -168,6 +172,7 @@ curso : String => Armazena o curso do aluno.
 livrosPegos : int =>Controla quantos livros o aluno possui emprestados.
 
 matricula : int => Identifica o aluno na universidade.
+
 
 **Métodos:**
 
@@ -192,6 +197,7 @@ Resultado: false
 E assim o sistema impede novos empréstimos.
 
 exibirDados() : void => Sobrescreve(override/substitui) o método da classe Pessoa, exibindo informações específicas do aluno. 
+
 
 **Exemplo:**
 
@@ -239,6 +245,7 @@ class Aluno: public Pessoa{
 
 A classe Livro representa os livros cadastrados na biblioteca.
 
+
 **Atributos:**
 
 titulo : String = > Armazena o título do livro.
@@ -246,6 +253,7 @@ titulo : String = > Armazena o título do livro.
 autor : String = > Armazena o autor do livro.
 
 disponivel : boolean =>  O atributo disponível controla se o livro está livre para empréstimo.
+
 
 **Métodos:**
 
@@ -266,6 +274,7 @@ Assim, o livro não poderá ser emprestado novamente até sua devolução.
 devolverLivro() : void => Quando o aluno devolve o livro, o método altera: disponivel = true
 
 Permitindo um novo empréstimo.
+
 
 **Trecho do código de Livro.h:**
 
@@ -303,6 +312,7 @@ class Livro{
 
 A classe Emprestimo é responsável por controlar as regras do empréstimo.
 
+
 **Atributos:**
 
 aluno : Aluno => Armazena o aluno responsável pelo empréstimo.
@@ -327,6 +337,7 @@ multa = diasAtraso × 2
 diasAtraso = 4
 
 Resultado: multa = 8.0
+
 
 **Trecho do código de Emprestimo.h:**
 
@@ -354,4 +365,77 @@ class Emprestimo {
 
 ```
 
+**5. Classe Biblioteca**
 
+A classe Biblioteca gerencia os livros e empréstimos do sistema.
+
+
+**Atributos:**
+
+livros : ArrayList<Livro> => Armazena os livros cadastrados.
+
+emprestimos : ArrayList<Emprestimo> =>Armazena os empréstimos realizados.
+
+**Métodos:**
+
+adicionarLivro() : void => Adiciona livros ao sistema.
+
+
+**Exemplo:**
+
+Livro Java adicionado
+
+listarLivros() : void => Exibe todos os livros cadastrados.
+
+realizarEmprestimo() : void => Esse método executa a principal regra do sistema.
+
+Ele realiza as seguintes verificações, como regra de negócio:
+
+
+**Passo 1 — Verificar disponibilidade do livro**
+
+Utiliza: livro.estaDisponivel()
+
+Se o livro não estiver disponível: Livro indisponível e o processo é encerrado.
+
+
+**Passo 2 — Verificar limite do aluno**
+
+Utiliza: aluno.podePegar()
+
+Se o aluno já possuir 3 livros: Aluno atingiu o limite e o empréstimo é negado.
+
+
+**Passo 3 — Realizar empréstimo**
+
+Caso tudo esteja correto:
+
+O método: livro.emprestarLivro() torna o livro indisponível.
+
+Depois: livrosPegos +1 
+
+Atualiza a quantidade de livros do aluno.
+
+Por fim: devolvido = false
+
+Marca que o livro ainda está emprestado.
+
+
+**Trecho do código de Biblioteca.h:**
+
+```
+class Biblioteca{
+    private:
+        std::vector<Livro> livros;
+        std::vector<Emprestimo> emprestimos;
+
+    public:
+        void adicionarLivro(Livro l);
+
+        void listarLivros();
+
+        void realizarEmprestimo(Aluno &a, size_t livroIndex);
+
+};
+
+```
