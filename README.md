@@ -49,11 +49,11 @@ máximo de 3 livros por aluno, está relacionado a classe: Aluno e ao método: p
 
 **6. Devolução de livro**
 
-Permite registrar a devolução do livro, tornando-o disponível novamente para novos empréstimos. Relacionada à classe: Livro e ao método: devolverLivro()
+Permite registrar e realizar a devolução do livro, tornando-o disponível novamente para novos empréstimos. (Relacionada à classe: Biblioteca e ao método: devolver())
 
 **7. Cálculo de multa**
 
-Caso haja atraso, o sistema calcula automaticamente a multa, essse comportamento está relacionado à classe: Emprestimo e ao método: calcularMulta().
+Caso haja atraso, o sistema calcula automaticamente a multa, esse comportamento está relacionado à classe: Emprestimo e ao método: calcularMulta().
 
 **8. Listagem de livros**
 
@@ -250,6 +250,8 @@ A classe Livro representa os livros cadastrados na biblioteca.
 
 titulo : String = > Armazena o título do livro.
 
+id: String = > Armazena o id do livro.
+
 autor : String = > Armazena o autor do livro.
 
 disponivel : boolean =>  O atributo disponível controla se o livro está livre para empréstimo.
@@ -281,12 +283,13 @@ Permitindo um novo empréstimo.
 ```
 class Livro{
      private:
+          std::string id;
           std::string titulo;
           std::string autor;
           bool disponivel;
 
      public:
-          Livro(std::string titulo, std::string autor);
+          Livro(std::string id, std::string titulo, std::string autor);
 
      void emprestarLivro();
      
@@ -297,6 +300,10 @@ class Livro{
      std::string getTitulo();
 
      std::string getAutor();
+
+     std::string getId();
+
+     void setId(std::string id);
 
      void setTitulo(std::string titulo);
 
@@ -380,7 +387,6 @@ emprestimos : ArrayList<Emprestimo> =>Armazena os empréstimos realizados.
 
 adicionarLivro() : void => Adiciona livros ao sistema.
 
-
 **Exemplo:**
 
 Livro Java adicionado
@@ -420,6 +426,8 @@ Por fim: devolvido = false
 
 Marca que o livro ainda está emprestado.
 
+devolver() : void => Esse método localiza o empréstimo de um livro, calcula a multa caso haja atraso, torna o livro disponível novamente, remove o empréstimo dos registros ativos e atualiza a quantidade de livros emprestados pelo aluno. 
+
 
 **Trecho do código de Biblioteca.h:**
 
@@ -434,8 +442,11 @@ class Biblioteca{
 
         void listarLivros();
 
-        void realizarEmprestimo(Aluno &a, size_t livroIndex);
+        void realizarEmprestimo(Aluno &a, std::string id);
+
+        void devolver(Aluno &a, std::string id, int diasAtraso);
 
 };
+
 
 ```
