@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-Livro::Livro(std::string titulo, std::string autor) : titulo(titulo), autor(autor), disponivel(true) {}
+Livro::Livro(std::string id, std::string titulo, std::string autor) : id(id), titulo(titulo), autor(autor), disponivel(true) {}
 
 void Livro::emprestarLivro(){
      disponivel = false;
@@ -20,12 +20,20 @@ std::string Livro::getTitulo(){
      return titulo;
 }
 
+std::string Livro::getId(){
+     return id;
+}
+
 std::string Livro::getAutor(){
      return autor;
 }
 
 void Livro::setTitulo(std::string titulo){
       this->titulo = titulo;
+}
+
+void Livro::setId(std::string id){
+      this->id = id;
 }
 
 void Livro::setAutor(std::string autor){

@@ -5,12 +5,13 @@
 
 class Livro{
      private:
+          std::string id;
           std::string titulo;
           std::string autor;
           bool disponivel;
 
      public:
-          Livro(std::string titulo, std::string autor);
+          Livro(std::string id, std::string titulo, std::string autor);
 
      void emprestarLivro();
      
@@ -21,6 +22,10 @@ class Livro{
      std::string getTitulo();
 
      std::string getAutor();
+
+     std::string getId();
+
+     void setId(std::string id);
 
      void setTitulo(std::string titulo);
 

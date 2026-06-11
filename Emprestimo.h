@@ -23,6 +23,8 @@ class Emprestimo {
           void setDiasAtraso(int diasAtraso);
 
           void setDevolvido(bool devolvido);
+
+          Livro getLivro();
 };
 
 #endif // EMPRESTIMO_H

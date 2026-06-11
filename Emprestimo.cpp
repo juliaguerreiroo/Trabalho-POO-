@@ -24,6 +24,10 @@ bool Emprestimo::getDevolvido(){
      return devolvido;
 }
 
+Livro Emprestimo::getLivro(){
+     return livro;
+}
+
 void Emprestimo::setDiasAtraso(int diasAtraso){
      this->diasAtraso = diasAtraso;
 }

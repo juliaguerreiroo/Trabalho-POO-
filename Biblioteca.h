@@ -15,7 +15,9 @@ class Biblioteca{
 
         void listarLivros();
 
-        void realizarEmprestimo(Aluno &a, size_t livroIndex);
+        void realizarEmprestimo(Aluno &a, std::string id);
+
+        void devolver(Aluno &a, std::string id, int diasAtraso);
 
 };
 
