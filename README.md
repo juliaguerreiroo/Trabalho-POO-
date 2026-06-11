@@ -117,14 +117,14 @@ A classe Pessoa é a superclasse do sistema, responsável por armazenar informa�
 
 **Atributos:**
 
-nome : String => armazena o nome da pessoa.
+* nome : String => armazena o nome da pessoa.
 
-cpf : String => armazena o CPF do usuário.
+* cpf : String => armazena o CPF do usuário.
 
 
 **Método:**
 
-exibirDados() : void => Exibe as informações da pessoa cadastrada.
+* exibirDados() : void => Exibe as informações da pessoa cadastrada.
 
 
 **Exemplo:**
@@ -167,16 +167,16 @@ A classe Aluno representa o usuário que poderá pegar livros emprestados, e  he
 
 **Atributos:**
 
-curso : String => Armazena o curso do aluno.
+* curso : String => Armazena o curso do aluno.
 
-livrosPegos : int =>Controla quantos livros o aluno possui emprestados.
+* livrosPegos : int =>Controla quantos livros o aluno possui emprestados.
 
-matricula : int => Identifica o aluno na universidade.
+* matricula : int => Identifica o aluno na universidade.
 
 
 **Métodos:**
 
-podePegar() : boolean => Verifica se o aluno ainda pode pegar livros emprestados.
+* podePegar() : boolean => Verifica se o aluno ainda pode pegar livros emprestados.
 
 Regra de negócio:
 
@@ -196,7 +196,7 @@ Resultado: false
 
 E assim o sistema impede novos empréstimos.
 
-exibirDados() : void => Sobrescreve(override/substitui) o método da classe Pessoa, exibindo informações específicas do aluno. 
+* exibirDados() : void => Sobrescreve(override/substitui) o método da classe Pessoa, exibindo informações específicas do aluno. 
 
 
 **Exemplo:**
@@ -248,18 +248,18 @@ A classe Livro representa os livros cadastrados na biblioteca.
 
 **Atributos:**
 
-titulo : String = > Armazena o título do livro.
+* titulo : String = > Armazena o título do livro.
 
-id: String = > Armazena o id do livro.
+* id: String = > Armazena o id do livro.
 
-autor : String = > Armazena o autor do livro.
+* autor : String = > Armazena o autor do livro.
 
-disponivel : boolean =>  O atributo disponível controla se o livro está livre para empréstimo.
+* disponivel : boolean =>  O atributo disponível controla se o livro está livre para empréstimo.
 
 
 **Métodos:**
 
-estaDisponivel() : boolean => Verifica se o livro pode ser emprestado.
+* estaDisponivel() : boolean => Verifica se o livro pode ser emprestado.
 
 **Exemplo:**
 
@@ -269,11 +269,11 @@ Resultado: true
 
 Livro disponível para empréstimo.
 
-emprestarLivro() : void => Quando um empréstimo é realizado, esse método altera o atributo: disponivel = false
+* emprestarLivro() : void => Quando um empréstimo é realizado, esse método altera o atributo: disponivel = false
 
 Assim, o livro não poderá ser emprestado novamente até sua devolução.
 
-devolverLivro() : void => Quando o aluno devolve o livro, o método altera: disponivel = true
+* devolverLivro() : void => Quando o aluno devolve o livro, o método altera: disponivel = true
 
 Permitindo um novo empréstimo.
 
@@ -315,25 +315,25 @@ class Livro{
 
 ```
 
-**4. Classe Emprestimoo**
+**4. Classe Emprestimo**
 
 A classe Emprestimo é responsável por controlar as regras do empréstimo.
 
 
 **Atributos:**
 
-aluno : Aluno => Armazena o aluno responsável pelo empréstimo.
+* aluno : Aluno => Armazena o aluno responsável pelo empréstimo.
 
-livro : Livro => Armazena o livro emprestado.
+* livro : Livro => Armazena o livro emprestado.
 
-diasAtraso : int => Usado para calcular multa.
+* diasAtraso : int => Usado para calcular multa.
 
-devolvido : boolean => Informa se o livro foi devolvido.
+* devolvido : boolean => Informa se o livro foi devolvido.
 
 
 **Métodos:**
 
-calcularMulta() : double => Calcula multa caso haja atraso.
+* calcularMulta() : double => Calcula multa caso haja atraso.
 
 Regra de negócio:
 
@@ -376,24 +376,23 @@ class Emprestimo {
 
 A classe Biblioteca gerencia os livros e empréstimos do sistema.
 
-
 **Atributos:**
 
-livros : ArrayList<Livro> => Armazena os livros cadastrados.
+* livros : ArrayList<Livro> => Armazena os livros cadastrados.
 
-emprestimos : ArrayList<Emprestimo> =>Armazena os empréstimos realizados.
+* emprestimos : ArrayList<Emprestimo> =>Armazena os empréstimos realizados.
 
 **Métodos:**
 
-adicionarLivro() : void => Adiciona livros ao sistema.
+* adicionarLivro() : void => Adiciona livros ao sistema.
 
 **Exemplo:**
 
 Livro Java adicionado
 
-listarLivros() : void => Exibe todos os livros cadastrados.
+* listarLivros() : void => Exibe todos os livros cadastrados.
 
-realizarEmprestimo() : void => Esse método executa a principal regra do sistema.
+* realizarEmprestimo() : void => Esse método executa a principal regra do sistema.
 
 Ele realiza as seguintes verificações, como regra de negócio:
 
@@ -426,8 +425,60 @@ Por fim: devolvido = false
 
 Marca que o livro ainda está emprestado.
 
-devolver() : void => Esse método localiza o empréstimo de um livro, calcula a multa caso haja atraso, torna o livro disponível novamente, remove o empréstimo dos registros ativos e atualiza a quantidade de livros emprestados pelo aluno. 
+* devolver() : void => Esse método registra a devolução de um livro emprestado.
+Ele realiza as seguintes verificações e atualizações no sistema:
 
+**Passo 1 — Localizar o empréstimo**
+
+Percorre a lista de empréstimos ativos.
+
+Utiliza: getLivro().getId()
+
+Se encontrar um empréstimo com o mesmo ID do livro informado, o processo continua.
+
+**Passo 2 — Verificar atraso**
+
+Utiliza: diasAtraso
+
+Se a quantidade de dias de atraso for maior que zero:
+
+O método setDiasAtraso() registra o atraso.
+
+Depois: calcularMulta()
+
+Calcula e exibe o valor da multa a ser paga pelo aluno.
+
+**Passo 3 — Tornar o livro disponível**
+
+Percorre a lista de livros da biblioteca.
+
+Utiliza: livro.getId()
+
+Ao encontrar o livro correspondente:
+
+O método livro.devolverLivro() marca o livro como disponível para novos empréstimos.
+
+**Passo 4 — Remover o empréstimo**
+
+Utiliza: emprestimos.erase()
+
+Remove o empréstimo da lista de empréstimos ativos, indicando que ele foi encerrado.
+
+**Passo 5 — Atualizar quantidade de livros do aluno**
+
+Utiliza:
+
+livrosPegos - 1
+
+Atualiza a quantidade de livros atualmente emprestados ao aluno.
+
+**Passo 6 — Confirmar devolução**
+
+Exibe a mensagem:
+
+"Livro devolvido"
+
+Finaliza o processo de devolução.
 
 **Trecho do código de Biblioteca.h:**
 
