@@ -81,6 +81,31 @@ A linguagem de programação C++ é uma linguagem de propósito geral criada com
 
 A relação do C++ com a Programação Orientada a Objetos (POO) está no fato de que a linguagem oferece suporte completo a esse paradigma. Em C++, é possível organizar o programa em classes e objetos, permitindo representar elementos do mundo real dentro do sistema.
 
+Pontos fortes:
+
+* Muito rápido e eficiente.
+
+* Grande controle sobre memória e hardware.
+
+* Suporta vários paradigmas de programação.
+
+* Amplamente utilizado em jogos, sistemas operacionais e aplicações de alto desempenho.
+
+* Possui um ecossistema maduro e vasto.
+
+
+Pontos fracos:
+
+* Difícil de aprender e dominar.
+
+* Maior risco de erros de memória e bugs complexos.
+
+* Desenvolvimento e manutenção podem ser mais trabalhosos.
+
+* Compilação de projetos grandes pode ser lenta.
+
+* Linguagem extensa e complexa.
+
 A orientação a objetos em C++ utiliza conceitos fundamentais como:
 * Encapsulamento: protege os dados da classe, controlando o acesso por meio de métodos.
 * Herança: permite criar novas classes baseadas em classes já existentes, reaproveitando código.
